@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.ui.text.input.KeyboardType
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 
 
@@ -50,8 +51,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Birth(m: Modifier){
-    var userName by remember { mutableStateOf("林政彥")}
-    var userWeight by remember { mutableStateOf(4000)}
+    var userName by remember { mutableStateOf("陳琬昀")}
+    var userWeight by remember { mutableStateOf(3300)}
     var userPassword by remember { mutableStateOf("")}
     var msg by remember { mutableStateOf("訊息")}
     val db = Firebase.firestore
@@ -110,8 +111,6 @@ fun Birth(m: Modifier){
             }
             Button(onClick = {
                 db.collection("users")
-                    //.whereEqualTo("userName", userName)
-                    //.whereLessThan("userWeight", userWeight)
                     .orderBy("userWeight", Query.Direction.DESCENDING)
                     .limit(2)
                     .get()
