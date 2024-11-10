@@ -128,7 +128,7 @@ fun Birth(m: Modifier){
                     }
             }) {
                 Text("查詢資料")
-            }
+            } //
             Button(onClick = {
                 db.collection("users")
                     .document(userName)
